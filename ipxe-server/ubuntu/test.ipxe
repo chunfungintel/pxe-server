@@ -1,0 +1,33 @@
+#!ipxe
+
+#https://ipxe.org/gsoc/nfs
+
+#prompt --key 0x02 --timeout 5000 Press Ctrl-B for the iPXE command line... || goto no_shell
+prompt --key 0x197e --timeout 5000 Press F12 for the iPXE command line... || goto second_chance
+shell
+exit
+
+:second_chance
+prompt --key 0x02 --timeout 5000 Press Ctrl-B for the iPXE command line... || goto third_chance
+shell
+exit
+
+
+:third_chance
+prompt --key 0x71 --timeout 5000 Press q for the iPXE command line... || goto no_shell
+shell
+exit
+
+
+:no_shell
+dhcp
+show uuid
+set dns 10.248.2.1
+chain http://inats.intel.com/ipxe?uuid=${uuid}
+#chain http://10.226.76.241:8080/ipxe?uuid=${uuid}
+#chain http://10.226.76.19:5050/boot_adlps.php?uuid=${uuid}
+#chain http://10.226.76.19:8000/boot.php
+
+shell
+exit
+

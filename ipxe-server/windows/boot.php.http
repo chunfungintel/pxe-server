@@ -1,0 +1,21 @@
+#!ipxe
+
+kernel wimboot
+# Must run script to start setup.exe, else unable to find boot media
+initrd install.cmd              install.cmd
+initrd winpeshl.ini             winpeshl.ini
+
+initrd windows/boot/bcd         BCD
+initrd windows/boot/boot.sdi    boot.sdi
+initrd windows/sources/boot.wim boot.wim
+#initrd http://10.226.76.19:8000/windows/sources/boot.wim boot.wim
+
+initrd windows/boot/fonts/segmono_boot.ttf segmono_boot.ttf
+initrd windows/boot/fonts/segoe_slboot.ttf segoe_slboot.ttf
+initrd windows/boot/fonts/segoen_slboot.ttf segoen_slboot.ttf
+initrd windows/boot/fonts/wgl4_boot.ttf wgl4_boot.ttf
+
+initrd windows/efi/boot/bootx64.efi bootx64.efi
+initrd windows/bootmgr bootmgr
+
+boot

@@ -1,0 +1,11 @@
+diff --git a/src/config/general.h b/src/config/general.h
+index 2d15f500..19336480 100644
+--- a/src/config/general.h
++++ b/src/config/general.h
+@@ -207,4 +207,6 @@ FILE_LICENCE ( GPL2_OR_LATER_OR_UBDL );
+ #include <config/local/general.h>
+ #include LOCAL_NAMED_CONFIG(general.h)
+ 
++#define DOWNLOAD_PROTO_NFS
++
+ #endif /* CONFIG_GENERAL_H */
